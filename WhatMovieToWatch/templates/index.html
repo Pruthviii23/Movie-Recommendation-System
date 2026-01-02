@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie Recommender</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>🎬 Movie Recommender</h1>
+
+<form method="POST" id="wizardForm">
+
+  <div id="inputFlow">
+
+    <!-- CARD 1 -->
+    <div class="card active">
+      <h2>Pick an occasion</h2>
+      <div class="options">
+        <button type="button" data-name="occasion" value="Solo watch">Solo watch</button>
+        <button type="button" data-name="occasion" value="Movie date">Movie date</button>
+        <button type="button" data-name="occasion" value="Family movie time">Family movie time</button>
+        <button type="button" data-name="occasion" value="Friends movie time">Friends movie time</button>
+      </div>
+      <input type="hidden" name="occasion">
+      <button type="button" class="next">Next →</button>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+      <h2>Select genres</h2>
+      <div class="options multi">
+        <button type="button" data-name="genres" value="Thriller">Thriller</button>
+        <button type="button" data-name="genres" value="Crime">Crime</button>
+        <button type="button" data-name="genres" value="Horror">Horror</button>
+        <button type="button" data-name="genres" value="Comedy">Comedy</button>
+        <button type="button" data-name="genres" value="Drama">Drama</button>
+      </div>
+      <div class="nav">
+        <button type="button" class="back">← Back</button>
+        <button type="button" class="next">Next →</button>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+      <h2>Your interests</h2>
+      <input type="text" name="interests" placeholder="Dark, Intense">
+      <div class="nav">
+        <button type="button" class="back">← Back</button>
+        <button type="button" class="next">Next →</button>
+      </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card">
+      <h2>Pick a mood</h2>
+      <div class="options">
+        <button type="button" data-name="mood" value="Dark">Dark</button>
+        <button type="button" data-name="mood" value="Feel-good">Feel-good</button>
+        <button type="button" data-name="mood" value="Intense">Intense</button>
+        <button type="button" data-name="mood" value="Inspiring">Inspiring</button>
+      </div>
+      <input type="hidden" name="mood">
+      <div class="nav">
+        <button type="button" class="back">← Back</button>
+        <button type="button" class="next">Next →</button>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="card">
+      <h2>How recent?</h2>
+      <div class="options">
+        <button type="button" data-name="recency" value="Latest">Latest</button>
+        <button type="button" data-name="recency" value="Modern">Modern</button>
+        <button type="button" data-name="recency" value="Any">Any</button>
+      </div>
+      <input type="hidden" name="recency">
+      <div class="nav">
+        <button type="button" class="back">← Back</button>
+        <button type="submit">🎥 Show movies</button>
+      </div>
+    </div>
+
+  </div>
+</form>
+
+
+<!-- MOVIE FLOW -->
+{% if results is not none %}
+<div id="movieFlow">
+
+  <button id="prevBtn">⬅ Previous</button>
+
+  {% for row in results %}
+  <div class="movie-card">
+    <h2>{{ row.movie_name }} ({{ row.year }})</h2>
+    <p>{{ row.overview }}</p>
+    <small>{{ row.tags }}</small>
+  </div>
+  {% endfor %}
+
+  <button id="nextBtn">Next ➡</button>
+
+  <!-- START OVER -->
+  <div style="margin-top: 25px;">
+    <a href="/reset">
+      <button>🔄 Start Over</button>
+    </a>
+  </div>
+
+</div>
+{% endif %}
+
+
+<script src="/static/script.js"></script>
+</body>
+</html>
