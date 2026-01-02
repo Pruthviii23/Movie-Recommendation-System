@@ -7,112 +7,116 @@
 </head>
 <body>
 
-<h1>🎬 Movie Recommender</h1>
+<h1>🎬 What should we watch today?</h1>
+<p class="subtitle">Answer a few questions and we’ll take it from there</p>
 
 <form method="POST" id="wizardForm">
 
-  <div id="inputFlow">
+<div id="inputFlow">
 
-    <!-- CARD 1 -->
+    <!-- CARD 1: OCCASION -->
     <div class="card active">
-      <h2>Pick an occasion</h2>
-      <div class="options">
-        <button type="button" data-name="occasion" value="Solo watch">Solo watch</button>
-        <button type="button" data-name="occasion" value="Movie date">Movie date</button>
-        <button type="button" data-name="occasion" value="Family movie time">Family movie time</button>
-        <button type="button" data-name="occasion" value="Friends movie time">Friends movie time</button>
-      </div>
-      <input type="hidden" name="occasion">
-      <button type="button" class="next">Next →</button>
+        <h2>What’s the occasion?</h2>
+        <div class="options grid">
+            <button type="button" data-name="occasion" value="Just watching a movie">Just watching a movie</button>
+            <button type="button" data-name="occasion" value="Movie date">Movie date</button>
+            <button type="button" data-name="occasion" value="Family movie time">Family movie time</button>
+            <button type="button" data-name="occasion" value="Friends movie time">Friends movie time</button>
+            <button type="button" data-name="occasion" value="Binge watch">Binge watch</button>
+            <button type="button" data-name="occasion" value="Solo watch">Solo watch</button>
+        </div>
+        <input type="hidden" name="occasion">
+        <div class="nav">
+            <button type="button" class="next">Next →</button>
+        </div>
     </div>
 
-    <!-- CARD 2 -->
+    <!-- CARD 2: GENRES -->
     <div class="card">
-      <h2>Select genres</h2>
-      <div class="options multi">
-        <button type="button" data-name="genres" value="Thriller">Thriller</button>
-        <button type="button" data-name="genres" value="Crime">Crime</button>
-        <button type="button" data-name="genres" value="Horror">Horror</button>
-        <button type="button" data-name="genres" value="Comedy">Comedy</button>
-        <button type="button" data-name="genres" value="Drama">Drama</button>
-      </div>
-      <div class="nav">
-        <button type="button" class="back">← Back</button>
-        <button type="button" class="next">Next →</button>
-      </div>
+        <h2>Pick genres you like</h2>
+        <div class="options grid multi">
+            <button type="button" data-name="genres" value="Action">Action</button>
+            <button type="button" data-name="genres" value="Thriller">Thriller</button>
+            <button type="button" data-name="genres" value="Crime">Crime</button>
+            <button type="button" data-name="genres" value="Drama">Drama</button>
+            <button type="button" data-name="genres" value="Comedy">Comedy</button>
+            <button type="button" data-name="genres" value="Horror">Horror</button>
+            <button type="button" data-name="genres" value="Romance">Romance</button>
+            <button type="button" data-name="genres" value="Mystery">Mystery</button>
+        </div>
+        <div class="nav">
+            <button type="button" class="back">← Back</button>
+            <button type="button" class="next">Next →</button>
+        </div>
     </div>
 
-    <!-- CARD 3 -->
+    <!-- CARD 3: INTERESTS -->
     <div class="card">
-      <h2>Your interests</h2>
-      <input type="text" name="interests" placeholder="Dark, Intense">
-      <div class="nav">
-        <button type="button" class="back">← Back</button>
-        <button type="button" class="next">Next →</button>
-      </div>
+        <h2>Anything specific you’re in the mood for?</h2>
+        <input class="text-input" type="text" name="interests" placeholder="Dark, Intense, Fast-paced…">
+        <div class="nav">
+            <button type="button" class="back">← Back</button>
+            <button type="button" class="next">Next →</button>
+        </div>
     </div>
 
-    <!-- CARD 4 -->
+    <!-- CARD 4: MOOD -->
     <div class="card">
-      <h2>Pick a mood</h2>
-      <div class="options">
-        <button type="button" data-name="mood" value="Dark">Dark</button>
-        <button type="button" data-name="mood" value="Feel-good">Feel-good</button>
-        <button type="button" data-name="mood" value="Intense">Intense</button>
-        <button type="button" data-name="mood" value="Inspiring">Inspiring</button>
-      </div>
-      <input type="hidden" name="mood">
-      <div class="nav">
-        <button type="button" class="back">← Back</button>
-        <button type="button" class="next">Next →</button>
-      </div>
+        <h2>Pick a mood</h2>
+        <div class="options grid">
+            <button type="button" data-name="mood" value="Feel-good">Feel-good</button>
+            <button type="button" data-name="mood" value="Light & fun">Light & fun</button>
+            <button type="button" data-name="mood" value="Emotional">Emotional</button>
+            <button type="button" data-name="mood" value="Intense">Intense</button>
+            <button type="button" data-name="mood" value="Dark">Dark</button>
+            <button type="button" data-name="mood" value="Inspiring">Inspiring</button>
+        </div>
+        <input type="hidden" name="mood">
+        <div class="nav">
+            <button type="button" class="back">← Back</button>
+            <button type="button" class="next">Next →</button>
+        </div>
     </div>
 
-    <!-- CARD 5 -->
+    <!-- CARD 5: RECENCY -->
     <div class="card">
-      <h2>How recent?</h2>
-      <div class="options">
-        <button type="button" data-name="recency" value="Latest">Latest</button>
-        <button type="button" data-name="recency" value="Modern">Modern</button>
-        <button type="button" data-name="recency" value="Any">Any</button>
-      </div>
-      <input type="hidden" name="recency">
-      <div class="nav">
-        <button type="button" class="back">← Back</button>
-        <button type="submit">🎥 Show movies</button>
-      </div>
+        <h2>How recent should it be?</h2>
+        <div class="options grid">
+            <button type="button" data-name="recency" value="Latest">Latest</button>
+            <button type="button" data-name="recency" value="Modern">Modern</button>
+            <button type="button" data-name="recency" value="Any">Doesn’t matter</button>
+        </div>
+        <input type="hidden" name="recency">
+        <div class="nav">
+            <button type="button" class="back">← Back</button>
+            <button type="submit" class="primary">🎥 Show movies</button>
+        </div>
     </div>
 
-  </div>
+</div>
 </form>
 
-
-<!-- MOVIE FLOW -->
+<!-- MOVIES -->
 {% if results is not none %}
 <div id="movieFlow">
 
-  <button id="prevBtn">⬅ Previous</button>
+    <div class="movie-nav">
+        <button id="prevBtn">← Previous</button>
+        <button id="nextBtn">Next →</button>
+    </div>
 
-  {% for row in results %}
-  <div class="movie-card">
-    <h2>{{ row.movie_name }} ({{ row.year }})</h2>
-    <p>{{ row.overview }}</p>
-    <small>{{ row.tags }}</small>
-  </div>
-  {% endfor %}
+    {% for row in results %}
+    <div class="movie-card">
+        <h2>{{ row.movie_name }} ({{ row.year }})</h2>
+        <p>{{ row.overview }}</p>
+        <span class="tags">{{ row.tags }}</span>
+    </div>
+    {% endfor %}
 
-  <button id="nextBtn">Next ➡</button>
-
-  <!-- START OVER -->
-  <div style="margin-top: 25px;">
-    <a href="/reset">
-      <button>🔄 Start Over</button>
-    </a>
-  </div>
+    <a href="/reset" class="start-over">🔄 Start over</a>
 
 </div>
 {% endif %}
-
 
 <script src="/static/script.js"></script>
 </body>
