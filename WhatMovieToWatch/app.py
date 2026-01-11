@@ -11,7 +11,6 @@ def index():
         results = recommend_movies(
             occasion=request.form.get("occasion"),
             genres=request.form.getlist("genres"),
-            interests=request.form.get("interests").split(","),
             mood=request.form.get("mood"),
             recency=request.form.get("recency"),
             top_n=10

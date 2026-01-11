@@ -76,17 +76,15 @@ def apply_genre_filter(data, selected_genres):
     mask = data["tags"].str.contains("|".join(genre_tags), case=False)
     return data[mask]
 
-def build_user_query(genres, interests, mood):
+def build_user_query(genres, mood):
     query = []
     for g in genres:
         query.append(g)
-    for i in interests:
-        query.append(i)
     if mood:
         query.extend(MOOD_MAP.get(mood, []))
     return " ".join(query)
 
-def recommend_movies(occasion, genres, interests, mood, recency, top_n=10):
+def recommend_movies(occasion, genres, mood, recency, top_n=10):
     filtered = df.copy()
     filtered = apply_occasion_filter(filtered, occasion)
     filtered = apply_genre_filter(filtered, genres)
@@ -95,7 +93,7 @@ def recommend_movies(occasion, genres, interests, mood, recency, top_n=10):
     if filtered.empty:
         return pd.DataFrame()
 
-    user_query = build_user_query(genres, interests, mood)
+    user_query = build_user_query(genres, mood)
     user_vec = vectorizer.transform([user_query])
 
     filtered_idx = filtered.index
